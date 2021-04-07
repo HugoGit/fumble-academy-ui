@@ -7,7 +7,7 @@ const instance = axios.create(config)
 
 // Add a request interceptor
 instance.interceptors.request.use((config) => {
-  let user = store.getters.user
+  const user = store.getters.user
   if (user.token !== '') {
     config.headers.Authorization = 'Bearer ' + user.token
   }
@@ -19,14 +19,14 @@ instance.interceptors.request.use((config) => {
 
 // Add a response interceptor
 instance.interceptors.response.use((response) => {
-  let commit = store.commit
+  const commit = store.commit
   if (response.headers.access_token) {
     commit('setToken', response.headers.access_token)
   }
 
   return response
 }, (error) => {
-  let commit = store.commit
+  const commit = store.commit
   if (error.response.status === 401) {
     commit('setLogout')
   }
