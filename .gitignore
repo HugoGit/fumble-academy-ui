@@ -7,6 +7,8 @@ node_modules
 .env.local
 .env.*.local
 
+config/api.conf.js
+
 # Log files
 npm-debug.log*
 yarn-debug.log*
