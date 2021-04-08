@@ -11,8 +11,8 @@ export default {
   getters: {
     user (state) {
       return {
-        email: state.info.email,
-        id: state.info.id,
+        email: state.email,
+        id: state.id,
         token: state.token
       }
     },
@@ -54,6 +54,11 @@ export default {
       return userServices.login(data).then(data => {
         commit('setToken', data.token)
         commit('setLogged')
+      })
+    },
+    register ({ commit }, data) {
+      return userServices.register(data).then(data => {
+        commit('setToken', data.token)
       })
     },
     logout ({ commit }) {

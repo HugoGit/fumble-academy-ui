@@ -13,6 +13,11 @@
       </template>
 
       <div class="con-form">
+        <vs-input v-model="name" placeholder="Name">
+          <template #icon>
+            <i class='bx bxs-user'></i>
+          </template>
+        </vs-input>
         <vs-input v-model="email" placeholder="Email">
           <template #icon>
             @
@@ -23,17 +28,18 @@
             <i class='bx bxs-lock'></i>
           </template>
         </vs-input>
+        <vs-input type="password" v-model="password_confirm" placeholder="Password confirmation">
+          <template #icon>
+            <i class='bx bxs-lock'></i>
+          </template>
+        </vs-input>
       </div>
 
       <template #footer>
         <div class="footer-dialog">
-          <vs-button @click="signin" block>
-            Sign In
+          <vs-button @click="signup" block>
+            Register
           </vs-button>
-
-          <div class="new">
-            New Here? <a href="/register">Create New Account</a>
-          </div>
         </div>
       </template>
     </vs-dialog>
@@ -47,15 +53,17 @@ export default {
   data () {
     return {
       active: true,
+      name: '',
       email: '',
       password: '',
+      password_confirm: '',
       remember: false
     }
   },
   methods: {
-    ...mapActions(['login']),
-    signin () {
-      this.login({ email: this.email, password: this.password }).then(() => this.$router.push({ name: 'Home' }))
+    ...mapActions(['register']),
+    signup () {
+      this.register({ name: this.name, email: this.email, password: this.password, password_confirm: this.password_confirm }).then(() => this.$router.push({ name: 'login' }))
     }
   }
 }

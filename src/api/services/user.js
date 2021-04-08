@@ -6,6 +6,11 @@ export default {
       return response.data
     })
   },
+  register (data) {
+    return Api.post('/auth/register', JSON.stringify(data)).then((response) => {
+      return response.data
+    })
+  },
   auth () {
     return Api.get('/auth/me').then((response) => {
       return response.data

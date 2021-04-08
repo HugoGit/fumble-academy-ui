@@ -20,8 +20,8 @@ instance.interceptors.request.use((config) => {
 // Add a response interceptor
 instance.interceptors.response.use((response) => {
   const commit = store.commit
-  if (response.headers.access_token) {
-    commit('setToken', response.headers.access_token)
+  if (response.headers.token) {
+    commit('setToken', response.headers.token)
   }
 
   return response
