@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Vuesax from 'vuesax'
 import App from './App.vue'
 import router from './router'
-import VueX from 'vuex'
 import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
@@ -21,4 +20,4 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-Vue.use(VueX, VueAxios, axios)
+Vue.use(VueAxios, axios)

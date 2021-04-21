@@ -31,6 +31,13 @@
             Sign In
           </vs-button>
 
+          <vs-button
+            color="rgb(59,222,200)"
+            gradient
+            @click="facebook" block>
+            Login/Register with facebook
+          </vs-button>
+
           <div class="new">
             New Here? <a href="/register">Create New Account</a>
           </div>
@@ -56,6 +63,9 @@ export default {
     ...mapActions(['login']),
     signin () {
       this.login({ email: this.email, password: this.password }).then(() => this.$router.push({ name: 'Home' }))
+    },
+    facebook () {
+      window.location = 'http://api.fumble-academy.local/redirect/facebook'
     }
   }
 }
